@@ -16,8 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.shortcuts import redirect
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('heat.urls')),  # Incluye las URLs de la aplicación "Heat"
+
+    # Redireccionar a la página de inicio ('index') cuando se acceda a 'accounts/profile/'
+    path('accounts/profile/', lambda request: redirect('index'), name='profile_redirect'),
 ]

@@ -1,13 +1,12 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
+
 {% block content %}
 
-<meta name="description" content="Página de inicio de Heat">
-
-
-
 <div class="jumbotron">
-    <h1>Bienvenido a Heat</h1>
-    <p>Una plataforma para...</p>
+    <h1 class="display-4">Bienvenido a Heat</h1>
+    <p class="lead">Tu plataforma de gestión de datos.</p>
+    {% if not user.is_authenticated %}
+        <p><a class="btn btn-primary btn-lg" href="{% url 'login' %}" role="button">Iniciar Sesión</a></p>
+    {% endif %}
 </div>
-
 {% endblock %}
