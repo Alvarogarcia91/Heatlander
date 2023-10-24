@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperaturas Guardadas</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Temperaturas Guardadas</h1>
+
+        <div class="container mt-5">
+            <h1>Temperaturas Guardadas</h1>
+            <!-- Agrega el formulario -->
+            <form method="post">
+                {% csrf_token %}
+                <input type="submit" name="guardar" value="Guardar">
+                <input type="submit" name="detener" value="Detener">
+            </form>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nodo</th>
+                    <th scope="col">Temperatura (°C)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for lectura in lecturas %}
+                <tr>
+                    <td>{{ lectura.id }}</td>
+                    <td>{{ lectura.nodo }}</td>
+                    <td>{{ lectura.temperatura }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
